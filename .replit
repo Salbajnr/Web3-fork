@@ -1,0 +1,20 @@
+modules = ["nodejs-20", "web"]
+run = "node index.js"
+
+[nix]
+channel = "stable-25_05"
+
+[deployment]
+run = ["sh", "-c", "node index.js"]
+
+[workflows]
+runButton = "Run Playground"
+
+[[workflows.workflow]]
+name = "Run Playground"
+author = 46920911
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm playground"
